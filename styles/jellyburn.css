@@ -560,6 +560,21 @@ body {
   color: #fbbf24;
 }
 
+/* Reviewer photo avatar */
+.reviewer-photo {
+  width: 80px;
+  height: 80px;
+  margin: 0 0 16px 0;
+}
+
+.reviewer-photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Review stats */
 .review-stat-value {
   color: #ea6306;
