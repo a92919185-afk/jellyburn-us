@@ -1,0 +1,857 @@
+/*
+ * THEME: JellyBurn
+ * Source: https://jellburn.com/ (primary visual reference)
+ * DNA: research/us-jellyburn-dna.md
+ * Type: Light professional — white/off-white content sections, orange accent, dark hero + footer
+ * Fonts: Barlow Condensed (headings) + Inter (body)
+ * Colors: primary #ea6306, bg #f8fafc, headings #0f172a, CTA black text on orange
+ *
+ * MAINTAINER NOTE — variable names MUST match theme.css exactly.
+ */
+
+@import url('theme.css');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+
+:root {
+  /* Primary brand: fire orange */
+  --primary:       #ea6306;      /* 3.22:1 vs #fff — WCAG AA pass for white-on-primary check */
+  --primary-dark:  #d5570b;      /* hover state */
+  --primary-light: #fff4ed;      /* warm light tint for labels */
+  --secondary:     #fbbf24;      /* amber accent */
+
+  /* Backgrounds — light professional theme */
+  --bg:            #f8fafc;
+  --bg-alt:        #ffffff;
+  --dark:          #0f172a;      /* heading text on light bg: 16:1 vs #f8fafc — WCAG AAA */
+  --alert-bg:      #7c2d12;      /* dark burnt-orange alert bar — 7.1:1 vs white ✓ */
+  --trust-bg:      #f8fafc;
+
+  /* Text */
+  --text:          #1e293b;
+  --text-muted:    #64748b;
+
+  /* CTA button: orange bg, black text (4.72:1 contrast ✓ WCAG AA) */
+  --cta-bg:        #f97316;
+  --cta-text:      #000000;
+
+  /* Misc */
+  --border:        #e2e8f0;
+  --star:          #fbbf24;
+
+  /* Typography */
+  --font-heading:  'Barlow Condensed', sans-serif;
+  --font-body:     'Inter', Arial, sans-serif;
+
+  /* Shape */
+  --radius-card:   10px;
+  --radius-btn:    50px;
+}
+
+/* ============================================
+   BODY — dark base
+   ============================================ */
+
+body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+/* ============================================
+   ALERT BAR
+   ============================================ */
+
+#announcement-bar {
+  background: #7c2d12;
+  color: #ffffff;
+}
+
+#announcement-bar .alert-badge i {
+  color: #fbbf24;
+  opacity: 1;
+}
+
+#announcement-bar .alert-badge-text {
+  color: #ffffff;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+#header {
+  background: #000000;
+  box-shadow: 0 2px 16px rgba(249, 115, 22, 0.12);
+}
+
+.nav-logo-text {
+  color: #f97316;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nav-logo-img,
+.footer-logo-img {
+  width: 108px !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .nav-logo-img,
+  .footer-logo-img {
+    width: 84px !important;
+  }
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.82);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #f97316;
+}
+
+/* ============================================
+   HERO — dark near-black with warm gradient
+   ============================================ */
+
+#hero {
+  background: linear-gradient(135deg, #000000 0%, #1a0800 55%, #2d1200 100%);
+  min-height: 88vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+#hero::after {
+  background: none;
+  pointer-events: none;
+}
+
+/* Hero badge */
+.hero-badge {
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #fbbf24;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Headline */
+.hero-text h1,
+#hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.0;
+  color: #ffffff;
+}
+
+/* Headline highlight word */
+.hero-text h1 .highlight,
+#hero h1 .highlight {
+  color: #f97316;
+  text-shadow: 0 0 40px rgba(249, 115, 22, 0.45);
+}
+
+/* Hero sub-text */
+.hero-sub,
+.hero-text p,
+#hero p {
+  color: rgba(229, 229, 229, 0.90);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero tags */
+.hero-tags .tag-item i {
+  color: #f97316;
+}
+
+.hero-tags .tag-item {
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero guarantee text */
+.hero-guarantee {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+/* Hero CTA */
+.hero-cta,
+#hero .btn-primary,
+#hero .cta-btn {
+  background: #f97316 !important;
+  color: #000000 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.45) !important;
+}
+
+.hero-cta:hover,
+#hero .btn-primary:hover,
+#hero .cta-btn:hover {
+  background: #d5570b !important;
+  box-shadow: 0 6px 28px rgba(234, 99, 6, 0.60) !important;
+  transform: translateY(-1px);
+}
+
+/* Rounded image corners */
+#hero .hero-image img,
+#hero .product-image img,
+#hero img:not(.nav-logo-img) {
+  border-radius: 16px;
+}
+
+/* ============================================
+   TRUST SECTION
+   ============================================ */
+
+#trust {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.trust-badge i {
+  color: #ea6306;
+}
+
+.trust-badge h4 {
+  color: #0f172a;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.trust-badge p,
+.trust-badge span {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   SOCIAL PROOF / STATS
+   ============================================ */
+
+/* social-proof — let theme.css orange background (var(--primary)) work; just ensure text is white */
+#social-proof {
+  background: #ea6306;
+}
+
+.stat-number {
+  color: #ffffff !important;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.20);
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.90) !important;
+  font-family: 'Inter', sans-serif;
+}
+
+.stat-divider {
+  background: rgba(255, 255, 255, 0.30) !important;
+}
+
+/* ============================================
+   BENEFITS SECTION
+   ============================================ */
+
+#benefits {
+  background: #ffffff;
+}
+
+#benefits h2,
+.benefits-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.benefits-label,
+.section-eyebrow {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+#benefits p {
+  color: #334155;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.75;
+}
+
+#benefits .btn-primary,
+#benefits .cta-btn,
+.benefits-cta {
+  background: #f97316 !important;
+  color: #000000 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+#benefits .btn-primary:hover,
+#benefits .cta-btn:hover {
+  background: #d5570b !important;
+}
+
+.urgency-text,
+.benefits-urgency {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#benefits img {
+  border-radius: 16px;
+}
+
+/* ============================================
+   FEATURES / INGREDIENTS
+   ============================================ */
+
+#features {
+  background: #f8fafc;
+}
+
+#features h2,
+.features-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.features-label {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.features-subheadline,
+#features .section-subheadline {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+.feature-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(234, 99, 6, 0.35) !important;
+  box-shadow: 0 4px 16px rgba(234, 99, 6, 0.10) !important;
+  transform: translateY(-2px);
+}
+
+.feature-card h3,
+.feature-card .feature-title {
+  color: #0f172a;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.feature-card p,
+.feature-card .feature-desc {
+  color: #334155;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.65;
+}
+
+.feature-icon-wrap i,
+.feature-card i {
+  color: #f97316;
+}
+
+#features .btn-primary,
+#features .cta-btn {
+  background: #f97316 !important;
+  color: #000000 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ============================================
+   SCIENCE SECTION
+   ============================================ */
+
+#science {
+  background: #ffffff;
+}
+
+#science h2,
+.science-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.science-label {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.science-subheadline {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+.science-title {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.science-step .step-label,
+.science-steps .step {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.science-steps p,
+.science-step p {
+  color: #334155;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+}
+
+.science-result {
+  color: #c2410c;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+}
+
+#science .btn-primary,
+#science .cta-btn {
+  background: #f97316 !important;
+  color: #000000 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+#science img {
+  border-radius: 16px;
+}
+
+/* ============================================
+   REVIEWS
+   ============================================ */
+
+#reviews {
+  background: #f8fafc;
+}
+
+#reviews h2,
+.reviews-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.reviews-label {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reviews-subheadline {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+.review-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.review-card:hover {
+  border-color: rgba(234, 99, 6, 0.30) !important;
+  box-shadow: 0 4px 16px rgba(234, 99, 6, 0.08) !important;
+}
+
+.review-card .review-body,
+.review-card p {
+  color: #334155;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.70;
+}
+
+.review-card .review-name,
+.review-card .reviewer-name {
+  color: #0f172a;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.review-card .review-verified,
+.review-card .verified-text {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+}
+
+.review-star i,
+.star i {
+  color: #fbbf24;
+}
+
+/* Review stats */
+.review-stat-value {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+}
+
+.review-stat-label {
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   FAQ
+   ============================================ */
+
+#faq {
+  background: #ffffff;
+}
+
+#faq h2,
+.faq-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.faq-label {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.faq-item {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.faq-item:hover {
+  border-color: rgba(234, 99, 6, 0.30) !important;
+}
+
+.faq-question,
+.faq-item summary,
+.faq-item .question {
+  color: #0f172a;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.05rem;
+}
+
+.faq-answer,
+.faq-item .answer,
+.faq-item p {
+  color: #334155;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.70;
+}
+
+.faq-item .faq-icon i,
+.faq-icon i {
+  color: #f97316;
+}
+
+/* ============================================
+   FINAL CTA / GUARANTEE
+   ============================================ */
+
+#final-cta,
+.final-cta-section {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-top: 2px solid #fed7aa;
+}
+
+#final-cta h2,
+.final-cta-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+#final-cta p {
+  color: #334155;
+  font-family: 'Inter', sans-serif;
+}
+
+#final-cta .btn-primary,
+#final-cta .cta-btn {
+  background: #f97316 !important;
+  color: #000000 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 4px 24px rgba(249, 115, 22, 0.45) !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+#footer {
+  background: #000000;
+  border-top: 1px solid #1f1f1f;
+}
+
+.footer-description,
+#footer p {
+  color: #a1a1aa;
+  font-family: 'Inter', sans-serif;
+}
+
+#footer h3,
+#footer h4,
+.footer-nav-title,
+.footer-legal-title {
+  color: #f97316;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-links a,
+#footer a {
+  color: #a1a1aa;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-links a:hover,
+#footer a:hover {
+  color: #f97316;
+}
+
+.footer-logo-text {
+  color: #f97316;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.footer-disclaimer,
+.disclaimer-text {
+  color: #52525b;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.copyright-text {
+  color: #52525b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   GLOBAL BUTTON OVERRIDES
+   ============================================ */
+
+.btn-primary {
+  background: #f97316;
+  color: #000000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 50px;
+  border: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: #d5570b;
+  box-shadow: 0 6px 28px rgba(234, 99, 6, 0.55);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   GLOBAL HEADINGS
+   ============================================ */
+
+h1, h2, h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+h4, h5, h6 {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+p, li, span, a {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Section headlines — common pattern */
+.section-label {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.90);
+}
+
+.modal-content {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+.modal-content h2,
+.modal-title {
+  color: #ea6306;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.modal-content h3,
+.modal-section-heading {
+  color: #0f172a;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+}
+
+.modal-content p,
+.modal-content li {
+  color: #334155;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.70;
+}
+
+.modal-close {
+  color: #64748b;
+}
+
+.modal-close:hover {
+  color: #ea6306;
+}
+
+/* ============================================
+   FLOATING CTA (mobile)
+   ============================================ */
+
+#floating-cta,
+.floating-cta {
+  background: #f97316;
+  color: #000000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-text h1,
+  #hero h1 {
+    font-size: 2.6rem;
+    line-height: 1.0;
+  }
+
+  #benefits h2,
+  #features h2,
+  #science h2,
+  #reviews h2,
+  #faq h2 {
+    font-size: 2.0rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1,
+  #hero h1 {
+    font-size: 2.1rem;
+  }
+}
